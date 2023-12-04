@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 export const cores = {
   branca: '#FFFFFF',
   laranja: '#E66767',
-  cinza: '#333',
+  laranjaClaro: '#FFF8F2',
   cinzaClaro: '#A3A3A3',
   verde: '#10AC84'
 }
@@ -18,9 +18,8 @@ export const GlobalCss = createGlobalStyle`
  }
 
  body {
-  background-color: ${cores.branca};
+  background-color: ${cores.laranjaClaro};
   color: ${cores.laranja};
-  padding-top: 40px;
  }
 .container {
   max-width: 1024px;
