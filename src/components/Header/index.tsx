@@ -1,7 +1,9 @@
+import { useLocation, Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
 import fundo from '../../assets/images/banner.png'
-import { Image, Link, Links, Description, HeaderContainer } from './styles'
+import { Image, LinkItem, Links, Description, HeaderContainer } from './styles'
 const Header = () => {
+  const location = useLocation()
   const isHomePage = location.pathname === '/'
   return (
     <HeaderContainer>
@@ -15,30 +17,30 @@ const Header = () => {
           <Links>
             {isHomePage ? (
               <>
-                <Link>
-                  <a href="">
+                <LinkItem>
+                  <Link to="/">
                     <img src={logo} alt="eFood" />
-                  </a>
+                  </Link>
                   <Description>
                     Viva experiências gastronômicas
                     <br />
                     no conforto da sua casa
                   </Description>
-                </Link>
+                </LinkItem>
               </>
             ) : (
               <>
-                <Link>
-                  <a href="">Restaurantes</a>
-                </Link>
-                <Link>
-                  <a href="">
+                <LinkItem>
+                  <Link to="/">Restaurantes</Link>
+                </LinkItem>
+                <LinkItem>
+                  <Link to="/">
                     <img src={logo} alt="eFood" />
-                  </a>
-                </Link>
-                <Link>
-                  <a href="">0 produto(s) no carrinho</a>
-                </Link>
+                  </Link>
+                </LinkItem>
+                <LinkItem>
+                  <Link to="">0 produto(s) no carrinho</Link>
+                </LinkItem>
               </>
             )}
           </Links>

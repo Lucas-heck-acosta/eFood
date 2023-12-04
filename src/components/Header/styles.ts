@@ -27,7 +27,7 @@ export const Links = styled.ul`
   margin: 0;
 `
 
-export const Link = styled.li`
+export const LinkItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
