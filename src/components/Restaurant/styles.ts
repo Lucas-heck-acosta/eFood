@@ -18,6 +18,10 @@ export const Card = styled.div`
     width: 100%;
   }
 `
+export const Media = styled.img`
+  max-height: 217px;
+  object-fit: cover;
+`
 
 export const Line = styled.div`
   display: flex;

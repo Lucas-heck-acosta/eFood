@@ -21,7 +21,7 @@ export const Image = styled.div`
 
 export const Links = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 40px 120px;
   margin: 0;

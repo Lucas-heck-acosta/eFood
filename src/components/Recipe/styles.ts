@@ -12,6 +12,7 @@ export const Card = styled.div`
 
   img {
     width: 100%;
+    max-height: 167px;
   }
 `
 
@@ -23,6 +24,8 @@ export const Titulo = styled.h3`
   margin-bottom: 8px;
 `
 export const Descricao = styled.p`
+  height: 175px;
+
   display: block;
   margin: 16px 0;
   font-size: 14px;
@@ -33,6 +36,7 @@ export const Botao = styled.button`
   padding: 4px;
   border: none;
   color: ${cores.laranja};
+  background-color: ${cores.laranjaClaro};
   font-weight: bold;
   cursor: pointer;
 `

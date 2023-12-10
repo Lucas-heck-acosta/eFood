@@ -1,13 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import PerfilHioki from './pages/Perfil/Hioki'
-import PerfilLaDolce from './pages/Perfil/LaDolceVita'
+import Perfil from './pages/Perfil'
 
 const Rotas = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/perfil/italiana" element={<PerfilLaDolce />} />
-    <Route path="/perfil/japonesa" element={<PerfilHioki />} />
+    <Route path="/perfil/:id" element={<Perfil />} />
   </Routes>
 )
 

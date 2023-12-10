@@ -4,11 +4,12 @@ type Props = {
   title: string
   description: string
   image: string
+  onClick: () => void
 }
 
-const Recipe = ({ title, description, image }: Props) => (
+const Recipe = ({ title, description, image, onClick }: Props) => (
   <Card>
-    <Content>
+    <Content onClick={onClick}>
       <img src={image} alt="Pizza" />
       <Titulo>{title}</Titulo>
       <Descricao>{description}</Descricao>
