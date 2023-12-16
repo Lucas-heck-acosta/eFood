@@ -1,11 +1,11 @@
 import { Restaurante } from '../../pages/Home'
+import { useGetRestaurantsQuery } from '../../services/api'
 import Restaurant from '../Restaurant'
 import { List, Container } from './styles'
 
-export type Props = {
-  restaurants: Restaurante[]
-}
-const RestaurantList = ({ restaurants }: Props) => {
+const RestaurantList = () => {
+  const { data: restaurantes } = useGetRestaurantsQuery()
+
   const getTags = (restaurante: Restaurante) => {
     const tags = []
 
@@ -15,11 +15,14 @@ const RestaurantList = ({ restaurants }: Props) => {
     tags.push(restaurante.tipo)
     return tags
   }
+  if (!restaurantes) {
+    return <h3>Carregando...</h3>
+  }
   return (
     <Container>
       <div className="container">
         <List>
-          {restaurants.map((restaurant) => (
+          {restaurantes.map((restaurant) => (
             <Restaurant
               key={restaurant.id}
               id={restaurant.id}

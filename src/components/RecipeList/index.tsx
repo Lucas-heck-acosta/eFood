@@ -4,7 +4,6 @@ import { List, Container, Modal, ModalContent, Media } from './styles'
 import fechar from '../../assets/images/fechar.svg'
 import { useState } from 'react'
 import { Restaurante } from '../../pages/Home'
-import { stringify } from 'querystring'
 
 export type Props = {
   restaurant: Restaurante
