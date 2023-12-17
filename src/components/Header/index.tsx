@@ -2,9 +2,20 @@ import { useLocation, Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
 import fundo from '../../assets/images/banner.png'
 import { Image, LinkItem, Links, Description, HeaderContainer } from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
+
 const Header = () => {
   const location = useLocation()
   const isHomePage = location.pathname === '/'
+
+  const dispath = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const openCart = () => {
+    dispath(open())
+  }
+
   return (
     <HeaderContainer>
       <Image
@@ -39,7 +50,9 @@ const Header = () => {
                   </Link>
                 </LinkItem>
                 <LinkItem>
-                  <Link to="">0 produto(s) no carrinho</Link>
+                  <a onClick={openCart}>
+                    {items.length} produto(s) no carrinho
+                  </a>
                 </LinkItem>
               </>
             )}

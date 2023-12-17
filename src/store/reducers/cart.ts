@@ -20,7 +20,7 @@ const cartSlice = createSlice({
       if (!cardapio) {
         state.items.push(action.payload)
       } else {
-        alert('O jogo já está no carrinho')
+        alert('Receita já está no carrinho')
       }
     },
     remove: (state, action: PayloadAction<number>) => {

@@ -1,8 +1,12 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderContainer = styled.header`
   justify-content: center;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 export const Image = styled.div`
   width: 100%;
@@ -32,6 +36,7 @@ export const LinkItem = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `
 
 export const Description = styled.p`
@@ -39,4 +44,8 @@ export const Description = styled.p`
   text-align: center;
   font-size: 36px;
   font-weight: bold;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `

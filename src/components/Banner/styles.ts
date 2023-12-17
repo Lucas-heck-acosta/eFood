@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -25,12 +25,8 @@ export const Imagem = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     padding: 20px;
-    box-sizing: border-box;/
-    color: ${cores.branca}
-  }
-
-  .container {
-    text-align:
+    box-sizing: border-box;
+    color: ${cores.branca};
   }
 `
 
@@ -38,6 +34,10 @@ export const Title = styled.h3`
   font-weight: bold;
   font-size: 32px;
   margin-top: 180px;
+
+  @media (max-width: ${breakpoints.phone}) {
+    font-size: 24px;
+  }
 `
 export const Category = styled.h3`
   font-weight: 100;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
-import { Botao } from '../Recipe/styles'
+import { breakpoints, cores } from '../../styles'
+import { ButtonContainer } from '../Button/styles'
 
 export const Container = styled.section``
 
@@ -9,6 +9,13 @@ export const List = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
   margin-top: 64px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: ${breakpoints.phone}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Modal = styled.div`
@@ -36,7 +43,7 @@ export const Modal = styled.div`
 `
 export const ModalContent = styled.div`
   max-width: 1024px;
-  widht: 100%;
+  width: 100%;
 
   position: relative;
   z-index: 1;
@@ -44,6 +51,10 @@ export const ModalContent = styled.div`
   color: ${cores.branca};
   padding: 24px;
   display: flex;
+
+  @media (max-width: ${breakpoints.phone}) {
+    flex-direction: column;
+  }
 
   div {
     display: flex;
@@ -70,9 +81,11 @@ export const ModalContent = styled.div`
   p {
     font-size: 14px;
     line-height: 22px;
-  }
-  ${Botao} {
-    max-width: 220px;
+
+    @media (max-width: ${breakpoints.phone}) {
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
   }
 `
 
@@ -81,4 +94,10 @@ export const Media = styled.img`
   height: 280px;
   margin-right: 24px;
   object-fit: cover;
+
+  @media (max-width: ${breakpoints.phone}) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
 `

@@ -19,7 +19,7 @@ export const Card = styled.div`
   }
 `
 export const Media = styled.img`
-  max-height: 217px;
+  height: 217px;
   object-fit: cover;
 `
 
@@ -43,6 +43,7 @@ export const Descricao = styled.p`
   margin: 16px 0;
   font-size: 14px;
   line-height: 22px;
+  height: 110px;
 `
 export const Infos = styled.div`
   position: absolute;
