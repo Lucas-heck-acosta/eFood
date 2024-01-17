@@ -43,7 +43,7 @@ export const Descricao = styled.p`
   margin: 16px 0;
   font-size: 14px;
   line-height: 22px;
-  height: 110px;
+  min-height: 110px;
 `
 export const Infos = styled.div`
   position: absolute;

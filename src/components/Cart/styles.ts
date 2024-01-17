@@ -33,6 +33,13 @@ export const Sidebar = styled.aside`
   padding: 32px 16px 0 16px;
   max-width: 360px;
   width: 100%;
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${cores.laranjaClaro};
+    text-align: center;
+  }
 `
 export const Prices = styled.div`
   font-weight: bold;
