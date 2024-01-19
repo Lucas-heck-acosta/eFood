@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 import { breakpoints, cores } from '../../styles'
 
-export const HeaderContainer = styled.header`
-  justify-content: center;
-
-  @media (max-width: ${breakpoints.tablet}) {
-    display: none;
-  }
-`
 export const Image = styled.div`
   width: 100%;
   display: block;
@@ -44,8 +37,28 @@ export const Description = styled.p`
   text-align: center;
   font-size: 36px;
   font-weight: bold;
+`
 
+export const DesktopHeader = styled.header`
+  justify-content: center;
   @media (max-width: ${breakpoints.tablet}) {
     display: none;
+  }
+`
+
+export const MobileHeader = styled.header`
+  justify-content: center;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    display: none;
+  }
+  ${Links} {
+    justify-content: space-between;
+    padding: 20px 10%;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
   }
 `

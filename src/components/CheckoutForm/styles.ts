@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: block;
   width: 100%;
   color: ${cores.laranjaClaro};
@@ -24,16 +24,21 @@ export const Form = styled.div`
     width: 100%;
 
   }
-  div:last-child {
-    margin-bottom: 24px;
-  }
+
 
   ${ButtonContainer} {
     margin-bottom: 8px;
+
+    &:first-child {
+      margin-top: 24px;
+    }
+  }
+
+  .hidden {
+    display: none;
   }
 `
 export const Row = styled.div`
   display: flex;
   column-gap: 24px;
-  align-items: flex-end;
 `

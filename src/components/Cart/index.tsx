@@ -5,13 +5,11 @@ import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
 import Button from '../Button'
 import { formataPreco } from '../RecipeList'
-import DeliveryForm from '../DeliveryForm'
+import CheckoutForm from '../CheckoutForm'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const [showCart, setShowCart] = useState(true)
-  const [showDelivery, setShowDelivery] = useState(false)
-  const [showPayment, setShowPayment] = useState(false)
   const dispath = useDispatch()
 
   const closeCart = () => {
@@ -32,11 +30,6 @@ const Cart = () => {
 
   const continueDelivery = () => {
     setShowCart(false)
-  }
-
-  const continuePayment = () => {
-    setShowPayment(true)
-    setShowDelivery(false)
   }
 
   return (
@@ -74,9 +67,9 @@ const Cart = () => {
                 </Button>
               </>
             ) : (
-              <DeliveryForm
-                continueToPayment={continuePayment}
+              <CheckoutForm
                 backToCart={goBackToCart}
+                value={formataPreco(getTotalPrice())}
               />
             )}
           </>
