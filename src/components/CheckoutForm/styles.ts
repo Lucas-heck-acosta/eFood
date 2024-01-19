@@ -42,3 +42,16 @@ export const Row = styled.div`
   display: flex;
   column-gap: 24px;
 `
+
+export const ChekoutMessage = styled.div`
+  color: ${cores.laranjaClaro};
+
+  h3 {
+    margin-bottom: 8px;
+  }
+  p {
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+`
