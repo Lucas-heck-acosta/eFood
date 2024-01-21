@@ -1,13 +1,14 @@
-import * as S from './styles'
-import Button from '../Button'
 import { useFormik } from 'formik'
 import { useEffect, useState } from 'react'
-import * as Yup from 'yup'
-import { usePurchaseMutation } from '../../services/api'
+import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
+import * as Yup from 'yup'
+import * as S from './styles'
+import Button from '../Button'
 import { RootReducer } from '../../store'
 import { clear } from '../../store/reducers/cart'
-import { Navigate } from 'react-router-dom'
+import { usePurchaseMutation } from '../../services/api'
 
 type Props = {
   backToCart: () => void

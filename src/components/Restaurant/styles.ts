@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Content = styled.div`
   padding: 0 6px 6px;
 `
 export const Card = styled.div`
-  background-color: ${cores.branca};
+  background-color: ${colors.white};
   position: relative;
   max-width: 472px;
-  border: 1px solid ${cores.laranja};
+  border: 1px solid ${colors.orange};
 
   ${TagContainer} {
     margin-right: 8px;
@@ -31,14 +31,14 @@ export const Line = styled.div`
     margin-left: 3px;
   }
 `
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-weight: bold;
   font-size: 16px;
   display: block;
   margin-top: 8px;
   margin-bottom: 8px;
 `
-export const Descricao = styled.p`
+export const Description = styled.p`
   display: block;
   margin: 16px 0;
   font-size: 14px;

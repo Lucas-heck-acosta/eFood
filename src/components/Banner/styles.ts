@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -11,7 +11,7 @@ export const Imagem = styled.div`
   background-size: cover;
   font-weight: bold;
   position: relative;
-  color: ${cores.branca};
+  color: ${colors.white};
 
   .overlay {
     position: absolute;
@@ -26,7 +26,7 @@ export const Imagem = styled.div`
     align-items: flex-start;
     padding: 20px;
     box-sizing: border-box;
-    color: ${cores.branca};
+    color: ${colors.white};
   }
 `
 

@@ -1,11 +1,12 @@
 import { useLocation, Link } from 'react-router-dom'
-import logo from '../../assets/images/logo.svg'
-import fundo from '../../assets/images/banner.png'
+
 import * as S from './styles'
+import { RootReducer } from '../../store'
+import logo from '../../assets/images/logo.svg'
+import { open } from '../../store/reducers/cart'
+import fundo from '../../assets/images/banner.png'
 import cart from '../../assets/images/carrinho.png'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { open } from '../../store/reducers/cart'
 
 const Header = () => {
   const location = useLocation()

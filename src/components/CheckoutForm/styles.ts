@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Form = styled.form`
   display: block;
   width: 100%;
-  color: ${cores.laranjaClaro};
+  color: ${colors.lightOrange};
 
   label {
     font-size: 14px;
@@ -17,10 +17,10 @@ export const Form = styled.form`
     margin-bottom: 16px;
   }
   input {
-    background-color: ${cores.laranjaMedio};
+    background-color: ${colors.mediumOrange};
     height: 32px;
     padding: 0 8px;
-    border: 1px; solid ${cores.laranjaMedio};
+    border: 1px; solid ${colors.mediumOrange};
     width: 100%;
 
   }
@@ -44,7 +44,7 @@ export const Row = styled.div`
 `
 
 export const ChekoutMessage = styled.div`
-  color: ${cores.laranjaClaro};
+  color: ${colors.lightOrange};
 
   h3 {
     margin-bottom: 8px;

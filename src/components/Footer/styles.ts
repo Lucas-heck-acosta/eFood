@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
-  background-color: ${cores.laranjaMedio};
+  background-color: ${colors.mediumOrange};
   height: 300px;
   justify-content: center;
   align-items: center;
@@ -19,6 +19,7 @@ export const SocialMedias = styled.ul`
 
 export const SocialMedia = styled.li`
   margin-right: 8px;
+  cursor: pointer;
 `
 
 export const Paragraph = styled.p`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Image = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ export const Image = styled.div`
   font-weight: bold;
 
   a {
-    color: ${cores.laranja};
+    color: ${colors.orange};
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;

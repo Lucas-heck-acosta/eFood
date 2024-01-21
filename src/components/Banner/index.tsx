@@ -1,5 +1,4 @@
-import React from 'react'
-import { Imagem, Title, Category } from './styles'
+import * as S from './styles'
 
 type Props = {
   category: string
@@ -8,14 +7,14 @@ type Props = {
 }
 
 const Banner = ({ category, title, image }: Props) => (
-  <Imagem style={{ backgroundImage: `url(${image})` }}>
+  <S.Imagem style={{ backgroundImage: `url(${image})` }}>
     <div className="overlay">
       <div className="container">
-        <Category>{category}</Category>
-        <Title>{title}</Title>
+        <S.Category>{category}</S.Category>
+        <S.Title>{title}</S.Title>
       </div>
     </div>
-  </Imagem>
+  </S.Imagem>
 )
 
 export default Banner

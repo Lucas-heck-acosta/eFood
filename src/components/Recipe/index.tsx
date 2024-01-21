@@ -1,5 +1,5 @@
 import Button from '../Button'
-import { Card, Descricao, Titulo, Content } from './styles'
+import * as S from './styles'
 
 type Props = {
   title: string
@@ -10,16 +10,16 @@ type Props = {
 
 const Recipe = ({ title, description, image, onClick }: Props) => {
   return (
-    <Card>
-      <Content onClick={onClick}>
+    <S.Card>
+      <S.Content onClick={onClick}>
         <img src={image} alt="Pizza" />
-        <Titulo>{title}</Titulo>
-        <Descricao>{description}</Descricao>
+        <S.Title>{title}</S.Title>
+        <S.Description>{description}</S.Description>
         <Button title="Clique para adicionar ao carrinho">
           Adicionar ao carrinho
         </Button>
-      </Content>
-    </Card>
+      </S.Content>
+    </S.Card>
   )
 }
 

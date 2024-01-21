@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { CartContainer, Overlay, Sidebar, Prices, CartItem } from './styles'
-import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
+
+import * as S from './styles'
 import Button from '../Button'
-import { formataPreco } from '../RecipeList'
+import { RootReducer } from '../../store'
 import CheckoutForm from '../CheckoutForm'
+import { formataPreco } from '../RecipeList'
+import { close, remove } from '../../store/reducers/cart'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -33,16 +34,16 @@ const Cart = () => {
   }
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar>
+    <S.CartContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeCart} />
+      <S.Sidebar>
         {items.length > 0 ? (
           <>
             {showCart ? (
               <>
                 <ul>
                   {items.map((item) => (
-                    <CartItem key={item.id}>
+                    <S.CartItem key={item.id}>
                       <img src={item.foto} alt={item.nome} />
                       <div>
                         <h3>{item.nome}</h3>
@@ -52,13 +53,13 @@ const Cart = () => {
                         type="button"
                         onClick={() => removeItem(item.id)}
                       />
-                    </CartItem>
+                    </S.CartItem>
                   ))}
                 </ul>
-                <Prices>
+                <S.Prices>
                   <p>Valor Total</p>
                   <p>{formataPreco(getTotalPrice())}</p>
-                </Prices>
+                </S.Prices>
                 <Button
                   title="Continuar com a entrega"
                   onclick={continueDelivery}
@@ -79,8 +80,8 @@ const Cart = () => {
             com a compra
           </p>
         )}
-      </Sidebar>
-    </CartContainer>
+      </S.Sidebar>
+    </S.CartContainer>
   )
 }
 export default Cart

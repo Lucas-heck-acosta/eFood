@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux'
+
 import Recipe from '../Recipe'
-import { List, Container, Modal, ModalContent, Media } from './styles'
-import fechar from '../../assets/images/fechar.svg'
-import { useState } from 'react'
-import { Cardapio, Restaurante } from '../../pages/Home'
 import Button from '../Button'
+import * as S from './styles'
+import { useState } from 'react'
+import fechar from '../../assets/images/fechar.svg'
 import { add, open } from '../../store/reducers/cart'
+import { Cardapio, Restaurante } from '../../pages/Home'
 
 export type Props = {
   restaurant: Restaurante
@@ -36,9 +37,9 @@ const RecipeList = ({ restaurant }: Props) => {
 
   return (
     <>
-      <Container>
+      <S.Container>
         <div className="container">
-          <List>
+          <S.List>
             {restaurant.cardapio.map((item) => (
               <Recipe
                 key={item.id}
@@ -50,15 +51,15 @@ const RecipeList = ({ restaurant }: Props) => {
                 }}
               />
             ))}
-          </List>
+          </S.List>
         </div>
-      </Container>
-      <Modal className={modal ? 'visible' : ''}>
-        <ModalContent>
+      </S.Container>
+      <S.Modal className={modal ? 'visible' : ''}>
+        <S.ModalContent>
           <header>
             <img src={fechar} alt="fechar aba" onClick={closeModal} />
           </header>
-          <Media src={modal?.foto} alt={modal?.nome} />
+          <S.Media src={modal?.foto} alt={modal?.nome} />
           <div>
             <h4>{modal?.nome}</h4>
             <p>{modal?.descricao}</p>
@@ -71,9 +72,9 @@ const RecipeList = ({ restaurant }: Props) => {
               {`Adicionar ao carrinho - ${formataPreco(modal?.preco)}`}
             </Button>
           </div>
-        </ModalContent>
+        </S.ModalContent>
         <div className="overlay" onClick={closeModal}></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
-import { ButtonContainer } from '../Button/styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Container = styled.section``
 
@@ -47,8 +46,8 @@ export const ModalContent = styled.div`
 
   position: relative;
   z-index: 1;
-  background-color: ${cores.laranja};
-  color: ${cores.branca};
+  background-color: ${colors.orange};
+  color: ${colors.white};
   padding: 24px;
   display: flex;
 

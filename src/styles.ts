@@ -5,13 +5,13 @@ export const breakpoints = {
   phone: '580px'
 }
 
-export const cores = {
-  branca: '#FFFFFF',
-  laranja: '#E66767',
-  laranjaClaro: '#FFF8F2',
-  laranjaMedio: '#FFEBD9',
-  cinzaClaro: '#A3A3A3',
-  verde: '#10AC84'
+export const colors = {
+  white: '#FFFFFF',
+  orange: '#E66767',
+  lightOrange: '#FFF8F2',
+  mediumOrange: '#FFEBD9',
+  gray: '#A3A3A3',
+  green: '#10AC84'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -24,8 +24,8 @@ export const GlobalCss = createGlobalStyle`
  }
 
  body {
-  background-color: ${cores.laranjaClaro};
-  color: ${cores.laranja};
+  background-color: ${colors.lightOrange};
+  color: ${colors.orange};
  }
 .container {
   max-width: 1024px;

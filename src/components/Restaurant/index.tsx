@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
+
 import Tag from '../Tag'
+import * as S from './styles'
 import star from '../../assets/images/estrela.svg'
-import { Card, Descricao, Titulo, Infos, Line, Content, Media } from './styles'
 
 type Props = {
   id: number
@@ -20,27 +21,27 @@ const Restaurant = ({
   infos,
   rating
 }: Props) => (
-  <Card>
-    <Media src={image} alt="" />
-    <Content>
-      <Line>
-        <Titulo>{title}</Titulo>
-        <Line>
-          <Titulo>{rating}</Titulo>
+  <S.Card>
+    <S.Media src={image} alt="" />
+    <S.Content>
+      <S.Line>
+        <S.Title>{title}</S.Title>
+        <S.Line>
+          <S.Title>{rating}</S.Title>
           <img src={star} alt="star" />
-        </Line>
-        <Infos>
+        </S.Line>
+        <S.Infos>
           {infos.map((info) => (
             <Tag key={info}>{info}</Tag>
           ))}
-        </Infos>
-      </Line>
-      <Descricao>{description}</Descricao>
+        </S.Infos>
+      </S.Line>
+      <S.Description>{description}</S.Description>
       <Link to={`/perfil/${id}`}>
         <Tag size="big">Saiba mais</Tag>
       </Link>
-    </Content>
-  </Card>
+    </S.Content>
+  </S.Card>
 )
 
 export default Restaurant
