@@ -7,13 +7,14 @@ import { useState } from 'react'
 import { parseToBRL } from '../../utils'
 import fechar from '../../assets/images/fechar.svg'
 import { add, open } from '../../store/reducers/cart'
-import { Cardapio, Restaurante } from '../../pages/Home'
+import Loader from '../Loader'
 
 export type Props = {
   restaurant: Restaurante
+  isLoading: boolean
 }
 
-const RecipeList = ({ restaurant }: Props) => {
+const RecipeList = ({ restaurant, isLoading }: Props) => {
   const [modal, setModal] = useState<Cardapio | null>(null)
 
   const closeModal = () => {
@@ -29,6 +30,9 @@ const RecipeList = ({ restaurant }: Props) => {
     }
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
   return (
     <>
       <S.Container>

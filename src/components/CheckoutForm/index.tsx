@@ -1,24 +1,24 @@
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
-import { useEffect, useState } from 'react'
-import { Navigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import InputMask from 'react-input-mask'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import * as S from './styles'
 import Button from '../Button'
 import { RootReducer } from '../../store'
-import { clear } from '../../store/reducers/cart'
 import { usePurchaseMutation } from '../../services/api'
 
 type Props = {
   backToCart: () => void
+  closeCart: () => void
+  clearCart: (value: boolean) => void
   value: string
 }
-const CheckoutForm = ({ backToCart, value }: Props) => {
+const CheckoutForm = ({ backToCart, closeCart, value, clearCart }: Props) => {
   const [showDelivery, setShowDelivery] = useState(true)
   const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
   const { items } = useSelector((state: RootReducer) => state.cart)
-  const dispatch = useDispatch()
 
   const handleShowDelivery = () => {
     setShowDelivery(!showDelivery)
@@ -54,7 +54,10 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
       number: Yup.string().required('Campo obrigatório'),
       cardName: Yup.string().required('Campo obrigatório'),
       cardNumber: Yup.string().required('Campo obrigatório'),
-      cardCode: Yup.string().required('Campo obrigatório'),
+      cardCode: Yup.string()
+        .min(3, 'O campo precisa ter 3 caracteres')
+        .max(3, 'O campo precisa ter 3 caracteres')
+        .required('Campo obrigatório'),
       expiresMonth: Yup.string().required('Campo obrigatório'),
       expiresYear: Yup.string().required('Campo obrigatório')
     }),
@@ -86,6 +89,7 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
           price: item.preco as number
         }))
       })
+      clearCart(true)
     }
   })
 
@@ -96,20 +100,18 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
 
     return hasError
   }
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(clear())
-    }
-  }, [dispatch, isSuccess])
 
-  if (items.length === 0 && !isSuccess) {
-    return <Navigate to="/" />
+  const checkContinue = () => {
+    const requiredFields = ['name', 'address', 'city', 'number']
+
+    return requiredFields.some((fieldName) => checkInputHasError(fieldName))
   }
+
   return (
     <div>
       {isSuccess && data ? (
         <>
-          <S.ChekoutMessage>
+          <S.CheckoutMessage>
             <h3>Pedido realizado - {data.orderId}</h3>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
@@ -128,8 +130,8 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </p>
-          </S.ChekoutMessage>
-          <Button title="Concluir" onclick={handleShowDelivery}>
+          </S.CheckoutMessage>
+          <Button title="Concluir" onclick={closeCart}>
             Concluir
           </Button>
         </>
@@ -147,6 +149,8 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
                   value={form.values.name}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
+                  className={checkInputHasError('name') ? 'error' : ''}
+                  autoFocus
                 />
               </div>
               <div>
@@ -158,6 +162,7 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
                   value={form.values.address}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
+                  className={checkInputHasError('address') ? 'error' : ''}
                 />
               </div>
               <div>
@@ -169,18 +174,21 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
                   value={form.values.city}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
+                  className={checkInputHasError('city') ? 'error' : ''}
                 />
               </div>
               <S.Row>
                 <div>
                   <label htmlFor="cep">CEP</label>
-                  <input
+                  <InputMask
                     id="cep"
                     type="text"
                     name="cep"
                     value={form.values.cep}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('cep') ? 'error' : ''}
+                    mask="99999-999"
                   />
                 </div>
                 <div>
@@ -192,6 +200,7 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
                     value={form.values.number}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('number') ? 'error' : ''}
                   />
                 </div>
               </S.Row>
@@ -204,6 +213,7 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
                   value={form.values.complement}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
+                  className={checkInputHasError('complement') ? 'error' : ''}
                 />
               </div>
             </div>
@@ -211,8 +221,11 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
               <Button
                 title="Continuar com o pagamento"
                 onclick={handleShowDelivery}
+                disabled={checkContinue()}
               >
-                Continuar com o pagamento
+                {checkContinue()
+                  ? 'Preencha os campos obrigatórios'
+                  : 'Continuar com o pagamento'}
               </Button>
               <Button title="Voltar para o carrinho" onclick={backToCart}>
                 Voltar para o carrinho
@@ -231,49 +244,60 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
                   value={form.values.cardName}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
+                  className={checkInputHasError('cardName') ? 'error' : ''}
                 />
               </div>
               <S.Row>
                 <div>
                   <label htmlFor="cardNumber">Número do cartão</label>
-                  <input
+                  <InputMask
                     id="cardNumber"
                     type="text"
                     value={form.values.cardNumber}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('cardNumber') ? 'error' : ''}
+                    mask="9999 9999 9999 9999"
                   />
                 </div>
                 <div>
                   <label htmlFor="cardCode">CVV</label>
-                  <input
+                  <InputMask
                     id="cardCode"
                     type="text"
                     value={form.values.cardCode}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('cardCode') ? 'error' : ''}
+                    mask="999"
                   />
                 </div>
               </S.Row>
               <S.Row>
                 <div>
                   <label htmlFor="expiresMonth">Mês de vencimento</label>
-                  <input
+                  <InputMask
                     id="expiresMonth"
                     type="text"
                     value={form.values.expiresMonth}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      checkInputHasError('expiresMonth') ? 'error' : ''
+                    }
+                    mask="99"
                   />
                 </div>
                 <div>
                   <label htmlFor="expiresYear">Ano de vencimento</label>
-                  <input
+                  <InputMask
                     id="expiresYear"
                     type="text"
                     value={form.values.expiresYear}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('expiresYear') ? 'error' : ''}
+                    mask="99"
                   />
                 </div>
               </S.Row>
@@ -281,10 +305,12 @@ const CheckoutForm = ({ backToCart, value }: Props) => {
 
             <div>
               <Button
-                title="Continuar com o pagamento"
+                title="Finalizar pagamento"
                 onclick={form.handleSubmit}
+                type="submit"
+                disabled={isLoading}
               >
-                Finalizar pagamento
+                {isLoading ? 'Finalizando compra...' : 'Finalizar pagamento'}
               </Button>
               <Button
                 title="Voltar para o carrinho"

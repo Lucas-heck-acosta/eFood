@@ -23,6 +23,10 @@ export const Form = styled.form`
     border: 1px; solid ${colors.mediumOrange};
     width: 100%;
 
+    &.error {
+      border: 3px solid red;
+    }
+
   }
 
 
@@ -43,7 +47,7 @@ export const Row = styled.div`
   column-gap: 24px;
 `
 
-export const ChekoutMessage = styled.div`
+export const CheckoutMessage = styled.div`
   color: ${colors.lightOrange};
 
   h3 {

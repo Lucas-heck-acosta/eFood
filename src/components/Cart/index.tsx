@@ -6,18 +6,25 @@ import Button from '../Button'
 import { parseToBRL } from '../../utils'
 import { RootReducer } from '../../store'
 import CheckoutForm from '../CheckoutForm'
-import { close, remove } from '../../store/reducers/cart'
+import { clear, close, remove } from '../../store/reducers/cart'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const [showCart, setShowCart] = useState(true)
-  const dispath = useDispatch()
+  const [clearCart, setClearCart] = useState(false)
+  const dispatch = useDispatch()
 
   const closeCart = () => {
-    dispath(close())
+    goBackToCart()
+    if (clearCart) {
+      dispatch(clear())
+    }
+    setClearCart(false)
+    dispatch(close())
   }
+
   const removeItem = (id: number) => {
-    dispath(remove(id))
+    dispatch(remove(id))
   }
   const getTotalPrice = () => {
     return items.reduce((acumulador, valorAtual) => {
@@ -30,7 +37,7 @@ const Cart = () => {
   }
 
   const continueDelivery = () => {
-    setShowCart(false)
+    if (items.length > 0) setShowCart(false)
   }
 
   return (
@@ -70,6 +77,8 @@ const Cart = () => {
             ) : (
               <CheckoutForm
                 backToCart={goBackToCart}
+                clearCart={setClearCart}
+                closeCart={closeCart}
                 value={parseToBRL(getTotalPrice())}
               />
             )}

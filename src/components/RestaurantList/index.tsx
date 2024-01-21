@@ -1,10 +1,10 @@
-import { Restaurante } from '../../pages/Home'
 import { useGetRestaurantsQuery } from '../../services/api'
+import Loader from '../Loader'
 import Restaurant from '../Restaurant'
 import { List, Container } from './styles'
 
 const RestaurantList = () => {
-  const { data: restaurantes } = useGetRestaurantsQuery()
+  const { data: restaurants } = useGetRestaurantsQuery()
 
   const getTags = (restaurante: Restaurante) => {
     const tags = []
@@ -15,14 +15,14 @@ const RestaurantList = () => {
     tags.push(restaurante.tipo)
     return tags
   }
-  if (!restaurantes) {
-    return <h3>Carregando...</h3>
+  if (!restaurants) {
+    return <Loader />
   }
   return (
     <Container>
       <div className="container">
         <List>
-          {restaurantes.map((restaurant) => (
+          {restaurants.map((restaurant) => (
             <Restaurant
               key={restaurant.id}
               id={restaurant.id}

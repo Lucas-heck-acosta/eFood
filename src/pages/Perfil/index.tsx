@@ -1,15 +1,20 @@
 import { useParams } from 'react-router-dom'
 import Banner from '../../components/Banner'
+import Loader from '../../components/Loader'
 import RecipeList from '../../components/RecipeList'
 import { useGetRestaurantRecipesQuery } from '../../services/api'
 
 const Perfil = () => {
   const { id } = useParams()
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { data: restaurante } = useGetRestaurantRecipesQuery(id!)
+  const { data: restaurante, isLoading } = useGetRestaurantRecipesQuery(id!)
 
-  if (!restaurante) {
-    return <h3>Carregando...</h3>
+  if (!restaurante || isLoading) {
+    return (
+      <h3>
+        <Loader />
+      </h3>
+    )
   }
   return (
     <>
@@ -17,8 +22,9 @@ const Perfil = () => {
         category={restaurante.tipo}
         title={restaurante.titulo}
         image={restaurante.capa}
+        isLoading={isLoading}
       />
-      <RecipeList restaurant={restaurante} />
+      <RecipeList restaurant={restaurante} isLoading={isLoading} />
     </>
   )
 }

@@ -5,14 +5,24 @@ export type Props = {
   onclick?: () => void
   children: string
   width?: string
+  type?: 'button' | 'submit'
+  disabled?: boolean
 }
-const Button = ({ title, onclick, children, width = '100%' }: Props) => {
+const Button = ({
+  title,
+  onclick,
+  children,
+  width = '100%',
+  type = 'button',
+  disabled = false
+}: Props) => {
   return (
     <ButtonContainer
-      type="button"
+      type={type}
       title={title}
       onClick={onclick}
       style={{ width }}
+      disabled={disabled}
     >
       {children}
     </ButtonContainer>
