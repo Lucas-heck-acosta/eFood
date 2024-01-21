@@ -4,19 +4,13 @@ import Recipe from '../Recipe'
 import Button from '../Button'
 import * as S from './styles'
 import { useState } from 'react'
+import { parseToBRL } from '../../utils'
 import fechar from '../../assets/images/fechar.svg'
 import { add, open } from '../../store/reducers/cart'
 import { Cardapio, Restaurante } from '../../pages/Home'
 
 export type Props = {
   restaurant: Restaurante
-}
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pr-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const RecipeList = ({ restaurant }: Props) => {
@@ -69,7 +63,7 @@ const RecipeList = ({ restaurant }: Props) => {
               width="220px"
               onclick={addToCart}
             >
-              {`Adicionar ao carrinho - ${formataPreco(modal?.preco)}`}
+              {`Adicionar ao carrinho - ${parseToBRL(modal?.preco)}`}
             </Button>
           </div>
         </S.ModalContent>

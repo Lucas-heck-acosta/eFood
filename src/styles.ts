@@ -9,9 +9,7 @@ export const colors = {
   white: '#FFFFFF',
   orange: '#E66767',
   lightOrange: '#FFF8F2',
-  mediumOrange: '#FFEBD9',
-  gray: '#A3A3A3',
-  green: '#10AC84'
+  mediumOrange: '#FFEBD9'
 }
 
 export const GlobalCss = createGlobalStyle`

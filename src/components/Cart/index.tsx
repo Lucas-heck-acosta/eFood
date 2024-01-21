@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import * as S from './styles'
 import Button from '../Button'
+import { parseToBRL } from '../../utils'
 import { RootReducer } from '../../store'
 import CheckoutForm from '../CheckoutForm'
-import { formataPreco } from '../RecipeList'
 import { close, remove } from '../../store/reducers/cart'
 
 const Cart = () => {
@@ -47,7 +47,7 @@ const Cart = () => {
                       <img src={item.foto} alt={item.nome} />
                       <div>
                         <h3>{item.nome}</h3>
-                        <span>{formataPreco(item.preco)}</span>
+                        <span>{parseToBRL(item.preco)}</span>
                       </div>
                       <button
                         type="button"
@@ -58,7 +58,7 @@ const Cart = () => {
                 </ul>
                 <S.Prices>
                   <p>Valor Total</p>
-                  <p>{formataPreco(getTotalPrice())}</p>
+                  <p>{parseToBRL(getTotalPrice())}</p>
                 </S.Prices>
                 <Button
                   title="Continuar com a entrega"
@@ -70,7 +70,7 @@ const Cart = () => {
             ) : (
               <CheckoutForm
                 backToCart={goBackToCart}
-                value={formataPreco(getTotalPrice())}
+                value={parseToBRL(getTotalPrice())}
               />
             )}
           </>

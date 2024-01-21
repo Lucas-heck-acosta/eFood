@@ -5,7 +5,7 @@ import { RootReducer } from '../../store'
 import logo from '../../assets/images/logo.svg'
 import { open } from '../../store/reducers/cart'
 import fundo from '../../assets/images/banner.png'
-import cart from '../../assets/images/carrinho.png'
+import cart from '../../assets/images/cart.png'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Header = () => {
@@ -32,7 +32,10 @@ const Header = () => {
               {isHomePage ? (
                 <>
                   <S.LinkItem>
-                    <Link to="/">
+                    <Link
+                      to="/"
+                      title="Clique aqui para voltar a página inicial."
+                    >
                       <img src={logo} alt="eFood" />
                     </Link>
                     <S.Description>
@@ -45,11 +48,19 @@ const Header = () => {
               ) : (
                 <>
                   <S.LinkItem>
-                    <Link to="/">Restaurantes</Link>
+                    <Link
+                      to="/"
+                      title="Clique aqui para ir a página de restaurantes."
+                    >
+                      Restaurantes
+                    </Link>
                   </S.LinkItem>
 
                   <S.LinkItem>
-                    <Link to="/">
+                    <Link
+                      to="/"
+                      title="Clique aqui para voltar a página inicial."
+                    >
                       <img src={logo} alt="eFood" />
                     </Link>
                   </S.LinkItem>
@@ -75,7 +86,7 @@ const Header = () => {
           <nav>
             <S.Links>
               <S.LinkItem>
-                <Link to="/">
+                <Link to="/" title="Clique aqui para voltar a página inicial.">
                   <img src={logo} alt="eFood" />
                 </Link>
               </S.LinkItem>

@@ -1,9 +1,9 @@
+import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import * as Yup from 'yup'
 import * as S from './styles'
 import Button from '../Button'
 import { RootReducer } from '../../store'

@@ -10,6 +10,7 @@ export const Card = styled.div`
   max-width: 320px;
   color: ${colors.lightOrange};
 
+  cursor: pointer;
   img {
     width: 100%;
     height: 167px;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import lixeira from '../../assets/images/lixeira.png'
+import trashcan from '../../assets/images/trashcan.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -88,7 +88,7 @@ export const CartItem = styled.li`
   }
 
   button {
-    background-image: url(${lixeira});
+    background-image: url(${trashcan});
     width: 16px;
     height: 16px;
     border: none;

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import Tag from '../Tag'
 import * as S from './styles'
-import star from '../../assets/images/estrela.svg'
+import star from '../../assets/images/star.svg'
 
 type Props = {
   id: number
